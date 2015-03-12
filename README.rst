@@ -20,7 +20,7 @@ Installation notes
 
 .. code-block:: bash
 
-    pip install horizon-overrides
+    pip install horizon-overrides-plugin
 
 .. code-block:: python
 
@@ -62,6 +62,6 @@ Full example config
     )
 
 Read more
------
+---------
 
 * http://docs.openstack.org/developer/horizon/topics/tutorial.html
