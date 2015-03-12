@@ -9,19 +9,34 @@ Problem
 
 Horizon supports only one overrides.py file. But if you have more than one plugin with overrides.py maybe you want include all overrides.py files.
 
+Require
+-------
+
+* Python 2.6 +
+* Openstack Dashboard Icehouse +
 
 Installation notes
-------------
+------------------
 
-* add `horizon_overrides` to INSTALLED_APPS tuple
-* add `horizon_overrides.overrides` to `customization_module` in HORIZON_CONFIG or include it from other `customization_module`
+.. code-block:: bash
 
+    pip install horizon-overrides
+
+.. code-block:: python
+
+    INSTALLED_APPS += ('horizon_overrides',)
+
+    HORIZON_CONFIG['customization_module'] = 'horizon_overrides.overrides'
 
 Usage
 -----
 
 * all overrides.py files will be included in defeault state
 * you can specify OVERRIDES = ['my_plugin','my_second_plugin.overrides', 'another_plugin.will_be_overrides'] in settings.py which restrict includes
+
+.. code-block:: python
+
+    OVERRIDES = ['my_plugin','my_second_plugin.overrides', 'another_plugin.will_be_overrides']
 
 *NOTE: all plugins must be in the INSTALLED_APPS tuple*
 
