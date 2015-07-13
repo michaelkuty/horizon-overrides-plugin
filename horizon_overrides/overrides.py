@@ -1,12 +1,14 @@
 
+import logging
+
 from django.conf import settings
 
 OVERRIDES = getattr(settings, "OVERRIDES", [])
 
 APP_NAMES = [override.split(".")[0] for override in OVERRIDES]
 
-import logging
 LOG = logging.getLogger('django.request')
+
 
 def overrides_name(app):
     """return override file name"""
@@ -27,7 +29,8 @@ def auto_overrides(app):
         __import__(module_name)
     except Exception as e:
         if "overrides" not in str(e):
-            LOG.error("module name %s failed with error: %s" % (module_name, e))
+            LOG.error(
+                "module name %s failed with error: %s" % (module_name, e))
 
 for app in settings.INSTALLED_APPS:
 
