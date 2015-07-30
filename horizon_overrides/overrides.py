@@ -32,9 +32,10 @@ def auto_overrides(app):
             LOG.error(
                 "module name %s failed with error: %s" % (module_name, e))
 
-for app in settings.INSTALLED_APPS:
+if len(APP_NAMES):
+    for app in APP_NAMES:
+        auto_overrides(app)
+else:
+    for app in settings.INSTALLED_APPS:
+        auto_overrides(app)
 
-    if len(APP_NAMES):
-        auto_overrides(app)
-    elif app in APP_NAMES:
-        auto_overrides(app)
